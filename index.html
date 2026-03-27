@@ -1,401 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💖 TRANS GIRLIES TRADING CLUB 💖 Brooklyn's Hottest Crypto Collective</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&family=Fredoka+One&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>💖 TRANS GIRLIES TRADING CLUB 💖 Brooklyn</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;background:#0d0010;color:#fff;position:relative;}
+
+.bg-mesh{
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 10%, #ff6eb4 0%, transparent 55%),
+    radial-gradient(ellipse 70% 70% at 90% 0%, #c77dff 0%, transparent 55%),
+    radial-gradient(ellipse 60% 60% at 50% 100%, #ff2d78 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 80% 60%, #55cdfc 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, #f7a8b8 0%, transparent 50%),
+    linear-gradient(135deg,#1a0020 0%,#0d0010 50%,#001a1a 100%);
+  animation:meshShift 12s ease-in-out infinite alternate;
+}
+@keyframes meshShift{0%{filter:hue-rotate(0deg) brightness(1)}100%{filter:hue-rotate(20deg) brightness(1.1)}}
+
+.bubbles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bubble{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), rgba(255,110,180,0.06));
+  border:1px solid rgba(255,255,255,0.13);
+  backdrop-filter:blur(2px);
+  animation:floatBubble linear infinite;
+}
+@keyframes floatBubble{0%{transform:translateY(110vh) scale(0.8);opacity:0}5%{opacity:1}95%{opacity:0.5}100%{transform:translateY(-10vh) scale(1.2);opacity:0}}
+
+.ticker-wrap{position:relative;z-index:10;background:linear-gradient(90deg,#55cdfc,#f7a8b8,#fff,#f7a8b8,#55cdfc);padding:9px 0;overflow:hidden;}
+.ticker{display:flex;width:max-content;animation:tick 45s linear infinite}
+.ticker span{padding:0 28px;font-family:'Comfortaa',cursive;font-size:.8rem;font-weight:700;color:#1a0020;letter-spacing:.06em;white-space:nowrap;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;
+  background:rgba(20,0,30,0.5);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid rgba(255,110,180,0.25);
+  box-shadow:0 2px 40px rgba(255,45,120,0.1);
+}
+.nav-logo{font-family:'Pacifico',cursive;font-size:1.4rem;color:#ff85b3;text-shadow:0 0 20px rgba(255,133,179,.6)}
+nav ul{display:flex;list-style:none;gap:28px;align-items:center}
+nav ul a{font-family:'Comfortaa',cursive;font-size:.9rem;font-weight:700;color:rgba(255,200,220,.75);transition:.2s;text-decoration:none;}
+nav ul a:hover{color:#ff85b3}
+.nav-btn{background:linear-gradient(135deg,#ff2d78,#c77dff);color:#fff!important;padding:8px 20px;border-radius:50px;box-shadow:0 4px 20px rgba(255,45,120,.45);}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,45,120,.7)!important}
+.nav-burger{display:none;background:none;border:none;color:#ff85b3;font-size:1.5rem;cursor:pointer}
+
+.glass{background:rgba(255,255,255,0.07);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(255,255,255,0.18);border-radius:24px;box-shadow:0 8px 40px rgba(255,45,120,.12),inset 0 1px 0 rgba(255,255,255,.2);}
+.glass-pink{background:rgba(255,45,120,0.12);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,110,180,.35);border-radius:24px;box-shadow:0 8px 40px rgba(255,45,120,.2),inset 0 1px 0 rgba(255,180,210,.25);}
+.glass-blue{background:rgba(85,205,252,0.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(85,205,252,.3);border-radius:24px;box-shadow:0 8px 40px rgba(85,205,252,.12),inset 0 1px 0 rgba(200,240,255,.2);}
+
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 24px;border-radius:50px;margin-bottom:24px;font-family:'Comfortaa',cursive;font-size:.85rem;font-weight:700;color:#f7c8d8;letter-spacing:.06em;}
+.hero h1{
+  font-family:'Pacifico',cursive;font-size:clamp(3rem,10vw,7rem);line-height:1.08;margin-bottom:24px;
+  background:linear-gradient(135deg,#ff85b3 0%,#fff 28%,#c77dff 55%,#55cdfc 78%,#ff2d78 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 40px rgba(255,45,120,.5));
+  animation:shimmer 4s ease-in-out infinite alternate;
+}
+@keyframes shimmer{0%{filter:drop-shadow(0 0 30px rgba(255,45,120,.4)) hue-rotate(0deg)}100%{filter:drop-shadow(0 0 60px rgba(199,125,255,.7)) hue-rotate(15deg)}}
+.hero-sub{font-size:1.15rem;color:rgba(255,220,235,.8);max-width:540px;line-height:1.7;margin-bottom:16px;}
+.hero-sub em{color:#ff85b3;font-style:normal;font-weight:800}
+.hero-joke{padding:12px 28px;border-radius:16px;margin-bottom:36px;font-size:.95rem;color:#a8e4ff;font-style:italic;display:inline-block;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.btn-main{background:linear-gradient(135deg,#ff2d78,#ff85b3,#c77dff);color:#fff;border:none;padding:16px 40px;border-radius:50px;font-family:'Comfortaa',cursive;font-size:1.05rem;font-weight:700;cursor:pointer;letter-spacing:.03em;box-shadow:0 8px 32px rgba(255,45,120,.55),0 0 0 1px rgba(255,255,255,.15) inset;transition:.25s;}
+.btn-main:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 50px rgba(255,45,120,.75)}
+.btn-outline{background:rgba(255,255,255,.06);color:#ffb3d1;border:1.5px solid rgba(255,133,179,.45);padding:15px 38px;border-radius:50px;font-family:'Comfortaa',cursive;font-size:1.05rem;font-weight:700;cursor:pointer;transition:.25s;text-decoration:none;display:inline-flex;align-items:center;backdrop-filter:blur(10px);}
+.btn-outline:hover{background:rgba(255,45,120,.15);border-color:#ff85b3;color:#fff;transform:translateY(-2px)}
+.emoji-row{font-size:1.6rem;letter-spacing:8px}
+.emoji-row span{display:inline-block;animation:bob 2s ease-in-out infinite}
+.emoji-row span:nth-child(2n){animation-delay:.15s}
+.emoji-row span:nth-child(3n){animation-delay:.3s}
+.emoji-row span:nth-child(4n){animation-delay:.45s}
+.emoji-row span:nth-child(5n){animation-delay:.6s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+section{position:relative;z-index:1;padding:90px 24px}
+.container{max-width:1060px;margin:0 auto}
+.s-tag{display:inline-block;padding:6px 18px;border-radius:50px;font-family:'Comfortaa',cursive;font-size:.8rem;font-weight:700;color:#ffb3d1;letter-spacing:.07em;margin-bottom:16px;background:rgba(255,45,120,.15);border:1px solid rgba(255,110,180,.3);}
+.s-title{font-family:'Pacifico',cursive;font-size:clamp(1.9rem,4.5vw,3.2rem);line-height:1.2;margin-bottom:48px;}
+.s-title .pk{background:linear-gradient(90deg,#ff85b3,#c77dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s-title .wh{color:#fff}
+
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-bottom:48px}
+.acard{padding:28px;border-radius:28px;transition:.3s;position:relative;overflow:hidden}
+.acard:hover{transform:translateY(-6px)}
+.acard-icon{font-size:2.4rem;margin-bottom:14px}
+.acard h3{font-family:'Comfortaa',cursive;font-weight:700;font-size:1.05rem;color:#fff;margin-bottom:8px}
+.acard p{font-size:.9rem;color:rgba(255,220,235,.7);line-height:1.6}
+.acard strong{color:rgba(255,220,235,.95)}
+.flags-center{text-align:center;font-size:2rem;letter-spacing:10px;animation:spread 3s ease-in-out infinite}
+@keyframes spread{0%,100%{letter-spacing:8px}50%{letter-spacing:16px}}
+
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.rcard{padding:26px 28px;border-radius:24px;display:flex;gap:18px;transition:.25s}
+.rcard:hover{transform:translateX(4px)}
+.rcard-big{grid-column:1/-1}
+.rnum{font-family:'Pacifico',cursive;font-size:2.2rem;color:rgba(255,133,179,.3);line-height:1;flex-shrink:0;min-width:48px;}
+.rcard-big .rnum{font-size:2.8rem;color:rgba(255,45,120,.5)}
+.rcard h3{font-family:'Comfortaa',cursive;font-weight:700;font-size:1.05rem;color:#fff;margin-bottom:6px}
+.rcard-big h3{font-size:1.35rem;color:#ff85b3}
+.rcard p{font-size:.9rem;color:rgba(255,220,235,.65);line-height:1.6}
+.rcard strong{color:rgba(255,220,235,.9)}
+
+.t-intro{max-width:680px;font-size:1rem;color:rgba(255,220,235,.7);line-height:1.8;margin-bottom:48px;padding-left:20px;border-left:3px solid #ff2d78;}
+.t-intro strong{color:rgba(255,220,235,.95)}
+.tcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-bottom:32px}
+.tcard{padding:26px;border-radius:24px;transition:.3s;position:relative}
+.tcard:hover{transform:translateY(-5px)}
+.feat-badge{position:absolute;top:-10px;right:18px;background:linear-gradient(90deg,#ff2d78,#c77dff);color:#fff;padding:4px 14px;border-radius:50px;font-family:'Comfortaa',cursive;font-size:.72rem;font-weight:700;}
+.t-icon{font-size:1.9rem;margin-bottom:12px}
+.tcard h3{font-family:'Comfortaa',cursive;font-weight:700;color:#fff;margin-bottom:8px}
+.tcard p{font-size:.88rem;color:rgba(255,220,235,.65);line-height:1.6}
+.disclaimer-box{padding:18px 24px;border-radius:18px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.22);font-size:.88rem;color:rgba(255,215,0,.8);}
+.disclaimer-box strong{color:#ffd700}
+
+.ed-sub{font-size:1rem;color:#ff85b3;font-style:italic;margin-top:-32px;margin-bottom:44px}
+.ecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-bottom:40px}
+.ecard{padding:26px;border-radius:24px;transition:.3s}
+.ecard:hover{transform:translateY(-5px);box-shadow:0 16px 50px rgba(199,125,255,.2)}
+.e-icon{font-size:2.2rem;margin-bottom:12px}
+.ecard h3{font-family:'Comfortaa',cursive;font-weight:700;color:#d4b0ff;margin-bottom:8px}
+.ecard p{font-size:.88rem;color:rgba(255,220,235,.65);line-height:1.6}
+.ecard strong{color:rgba(255,220,235,.9)}
+.wealth-strip{padding:32px 40px;border-radius:24px;text-align:center;background:linear-gradient(135deg,rgba(255,45,120,.15),rgba(199,125,255,.12),rgba(85,205,252,.1));border:1px solid rgba(255,133,179,.25);}
+.wealth-strip p{font-family:'Comfortaa',cursive;font-weight:700;font-size:1.15rem;color:#fff;line-height:1.9;}
+
+.rights-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.trans-flag{display:flex;flex-direction:column}
+.tf-s{flex:1;display:flex;align-items:center;justify-content:center}
+.tf-s.b{background:#55cdfc}.tf-s.pk{background:#f7a8b8}.tf-s.wh{background:#fff;flex:1.6}
+.rights-slogan{font-family:'Pacifico',cursive;font-size:clamp(1.2rem,2.8vw,2.5rem);color:#1a0020;text-align:center;line-height:1.35;padding:0 16px;}
+.rights-side{background:rgba(0,0,0,.35);backdrop-filter:blur(20px);padding:60px 50px;display:flex;flex-direction:column;justify-content:center;gap:18px;border-left:1px solid rgba(255,133,179,.2);}
+.rights-side p{font-size:.97rem;color:rgba(255,220,235,.75);line-height:1.8}
+.rights-side p strong{color:#ff85b3}
+.rights-em{font-size:1.4rem;letter-spacing:6px;margin-top:6px}
+
+.join-center{text-align:center}
+.join-sub{font-size:1rem;color:rgba(255,220,235,.7);max-width:520px;margin:-28px auto 40px;line-height:1.7;}
+.join-btn{background:linear-gradient(135deg,#ff2d78,#c77dff,#ff85b3);color:#fff;border:none;padding:20px 52px;border-radius:50px;font-family:'Comfortaa',cursive;font-size:1.2rem;font-weight:700;cursor:pointer;letter-spacing:.03em;box-shadow:0 8px 40px rgba(255,45,120,.55);transition:.3s;animation:gpulse 3s ease-in-out infinite;margin-bottom:52px;}
+@keyframes gpulse{0%,100%{box-shadow:0 8px 40px rgba(255,45,120,.55)}50%{box-shadow:0 8px 60px rgba(255,45,120,.85),0 0 80px rgba(255,45,120,.25)}}
+.join-btn:hover{transform:translateY(-4px) scale(1.02)}
+.join-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;max-width:680px;margin:0 auto}
+.ji{padding:20px;border-radius:20px;display:flex;align-items:center;gap:14px;}
+.ji-icon{font-size:1.8rem;flex-shrink:0}
+.ji strong{display:block;font-family:'Comfortaa',cursive;font-size:.78rem;font-weight:700;color:#ff85b3;text-transform:uppercase;letter-spacing:.06em}
+.ji p{font-size:.85rem;color:rgba(255,220,235,.6);margin:0}
+
+footer{position:relative;z-index:1;background:rgba(0,0,0,.5);backdrop-filter:blur(20px);border-top:1px solid rgba(255,45,120,.2);padding:56px 24px 36px;text-align:center;}
+.f-flags{font-size:1.4rem;letter-spacing:6px;margin-bottom:18px}
+.f-logo{font-family:'Pacifico',cursive;font-size:1.7rem;color:#ff85b3;text-shadow:0 0 30px rgba(255,133,179,.5);margin-bottom:8px}
+.f-sub{font-family:'Comfortaa',cursive;font-size:.82rem;color:rgba(255,200,220,.5);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.f-tagline{font-size:.88rem;color:rgba(255,200,220,.4);margin-bottom:14px}
+.f-contact{font-size:.9rem;color:rgba(255,200,220,.55);margin-bottom:14px}
+.f-contact a{color:#ff85b3;text-decoration:underline}
+.f-disc{font-size:.76rem;color:rgba(255,200,220,.25);max-width:460px;margin:0 auto 18px}
+.f-emojis{font-size:1.1rem;letter-spacing:5px}
+
+.pop-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,0,20,.75);backdrop-filter:blur(20px);align-items:center;justify-content:center;padding:20px;}
+.pop-overlay.on{display:flex}
+.pop-box{background:linear-gradient(135deg,rgba(45,5,50,.9),rgba(15,5,30,.95));border:2px solid rgba(255,110,180,.6);border-radius:32px;padding:48px 40px 40px;max-width:500px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(255,45,120,.4),0 0 120px rgba(199,125,255,.15);animation:popIn .4s cubic-bezier(.175,.885,.32,1.275);position:relative;}
+@keyframes popIn{from{transform:scale(.78) translateY(24px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.pop-close{position:absolute;top:14px;right:18px;background:rgba(255,45,120,.15);border:1px solid rgba(255,45,120,.3);color:#ff85b3;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;transition:.2s;}
+.pop-close:hover{background:rgba(255,45,120,.35);color:#fff}
+.pop-sparkles{font-size:1.5rem;letter-spacing:8px;margin-bottom:12px}
+.pop-title{font-family:'Pacifico',cursive;font-size:2rem;color:#ff85b3;margin-bottom:14px}
+.pop-text{font-size:.93rem;color:rgba(255,210,225,.75);line-height:1.7;margin-bottom:14px}
+.pop-text strong{color:#fff}.pop-text em{color:#ffb3d1;font-style:normal;font-weight:700}
+.pop-list{background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.2);border-radius:16px;padding:14px 18px;text-align:left;margin-bottom:14px;}
+.pop-list div{font-size:.88rem;color:rgba(255,210,225,.7);padding:3px 0}
+.pop-mailto{display:inline-block;background:linear-gradient(135deg,#ff2d78,#c77dff);color:#fff;padding:15px 40px;border-radius:50px;font-family:'Comfortaa',cursive;font-size:1rem;font-weight:700;box-shadow:0 8px 28px rgba(255,45,120,.4);transition:.2s;margin:8px 0 14px;}
+.pop-mailto:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,45,120,.6);text-decoration:none;color:#fff}
+.pop-or{font-size:.82rem;color:rgba(255,200,220,.5);margin-bottom:18px}
+.pop-or strong{color:#ffb3d1}
+.pop-tf{font-size:1.4rem;letter-spacing:8px}
+
+.reveal{opacity:0;transform:translateY(28px);transition:.65s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  nav ul{display:none}
+  nav ul.open{display:flex;flex-direction:column;gap:14px;position:absolute;top:100%;left:0;right:0;background:rgba(15,0,25,.97);border-top:1px solid rgba(255,45,120,.2);padding:20px;}
+  .nav-burger{display:block}
+  .rights-wrap{grid-template-columns:1fr}
+  .trans-flag{flex-direction:row;height:70px}
+  .tf-s.wh{flex:2}
+  .rights-slogan{font-size:.9rem}
+  .rights-side{padding:36px 24px}
+  .pop-box{padding:36px 22px 28px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2.8rem}
+  .join-btn{font-size:1rem;padding:16px 34px}
+}
+</style>
 </head>
 <body>
 
-  <!-- ✦ FLOATING PARTICLES ✦ -->
-  <div class="particles" id="particles"></div>
+<div class="bg-mesh"></div>
+<div class="bubbles" id="bubbles"></div>
 
-  <!-- ✦ TICKER TAPE ✦ -->
-  <div class="ticker-wrap">
-    <div class="ticker">
-      <span>💖 SOL TO THE MOON 💖</span>
-      <span>🏳️‍⚧️ TRANS RIGHTS ARE HUMAN RIGHTS 🏳️‍⚧️</span>
-      <span>💅 BUY THE DIP GIRLYPOP 💅</span>
-      <span>🌈 ONLY TRANS WOMEN ALLOWED 🌈</span>
-      <span>✨ BUILD YOUR BAG FOR SURGERY & STILETTOS ✨</span>
-      <span>🦋 SOLANA SPOT TRADING GIRLIE HOURS 🦋</span>
-      <span>💸 FREE MARKET GIRLIES WHO ALSO CARE ABOUT EACH OTHER 💸</span>
-      <span>🩷 NO CIS ZONE 🚫🙅‍♀️</span>
-      <span>💎 DIAMOND HANDS DIAMOND NAILS 💎</span>
-      <span>🏳️‍🌈 LOVE IS LOVE & SOL IS SOL 🏳️‍🌈</span>
-      <span>💖 SOL TO THE MOON 💖</span>
-      <span>🏳️‍⚧️ TRANS RIGHTS ARE HUMAN RIGHTS 🏳️‍⚧️</span>
-      <span>💅 BUY THE DIP GIRLYPOP 💅</span>
-      <span>🌈 ONLY TRANS WOMEN ALLOWED 🌈</span>
-      <span>✨ BUILD YOUR BAG FOR SURGERY & STILETTOS ✨</span>
-      <span>🦋 SOLANA SPOT TRADING GIRLIE HOURS 🦋</span>
-      <span>💸 FREE MARKET GIRLIES WHO ALSO CARE ABOUT EACH OTHER 💸</span>
-      <span>🩷 NO CIS ZONE 🚫🙅‍♀️</span>
-      <span>💎 DIAMOND HANDS DIAMOND NAILS 💎</span>
-      <span>🏳️‍🌈 LOVE IS LOVE & SOL IS SOL 🏳️‍🌈</span>
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>💖 SOL TO THE MOON 💖</span><span>🏳️‍⚧️ TRANS RIGHTS ARE HUMAN RIGHTS 🏳️‍⚧️</span>
+    <span>💅 BUY THE DIP GIRLYPOP 💅</span><span>🌈 TRANS WOMEN ONLY 🌈</span>
+    <span>✨ BUILD YOUR BAG FOR SURGERY AND STILETTOS ✨</span><span>🦋 SOLANA SPOT TRADING GIRLIE HOURS 🦋</span>
+    <span>💸 FREE MARKET GIRLIES WHO ALSO CARE ABOUT EACH OTHER 💸</span><span>🩷 NO CIS ZONE 🚫</span>
+    <span>💎 DIAMOND HANDS DIAMOND NAILS 💎</span><span>🏳️‍🌈 LOVE IS LOVE AND SOL IS SOL 🏳️‍🌈</span>
+    <span>💖 SOL TO THE MOON 💖</span><span>🏳️‍⚧️ TRANS RIGHTS ARE HUMAN RIGHTS 🏳️‍⚧️</span>
+    <span>💅 BUY THE DIP GIRLYPOP 💅</span><span>🌈 TRANS WOMEN ONLY 🌈</span>
+    <span>✨ BUILD YOUR BAG FOR SURGERY AND STILETTOS ✨</span><span>🦋 SOLANA SPOT TRADING GIRLIE HOURS 🦋</span>
+    <span>💸 FREE MARKET GIRLIES WHO ALSO CARE ABOUT EACH OTHER 💸</span><span>🩷 NO CIS ZONE 🚫</span>
+    <span>💎 DIAMOND HANDS DIAMOND NAILS 💎</span><span>🏳️‍🌈 LOVE IS LOVE AND SOL IS SOL 🏳️‍🌈</span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">💖 TGTC 💖</div>
+  <ul id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#trading">Trading</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#join" class="nav-btn">Join 💌</a></li>
+  </ul>
+  <button class="nav-burger" onclick="document.getElementById('nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="hero">
+  <div class="glass hero-pill">🌸 Brooklyn, NY · Est. 2024 🌸</div>
+  <h1>TRANS<br/>GIRLIES<br/>TRADING CLUB</h1>
+  <p class="hero-sub">Where <em>trans femmes</em> stack Solana bags, fund their transitions, and eat the rich <em>together.</em> 💸</p>
+  <div class="glass-blue hero-joke">🏦 Hyper-laissez-faire capitalism™ that <em>totally aligns with socialism</em> 😇</div>
+  <div class="hero-btns">
+    <button class="btn-main" onclick="openPop()">Join the Club 💌</button>
+    <a href="#about" class="btn-outline">Learn More 🦋</a>
+  </div>
+  <div class="emoji-row">
+    <span>🌸</span><span>💖</span><span>✨</span><span>🌷</span><span>💅</span><span>🦋</span><span>🩷</span><span>🌈</span><span>💎</span><span>🌸</span>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="s-tag">✨ Who We Are ✨</div>
+    <h2 class="s-title">Girls Who Trade Together <span class="pk">Slay Together</span> 💅</h2>
+    <div class="cards4">
+      <div class="acard glass-pink reveal">
+        <div class="acard-icon">🏳️‍⚧️</div>
+        <h3>Trans Women Only</h3>
+        <p>TGTC is a private social club exclusively for <strong>trans women</strong> in Brooklyn and greater NYC. Our space, built by us, for us. 🩷</p>
+      </div>
+      <div class="acard glass reveal">
+        <div class="acard-icon">💎</div>
+        <h3>High-Risk, High-Reward</h3>
+        <p>We specialize in <strong>Solana Network spot trading.</strong> High volatility? We don't flinch babe. We ARE the volatility. 🔥</p>
+      </div>
+      <div class="acard glass-blue reveal">
+        <div class="acard-icon">🌈</div>
+        <h3>Community First</h3>
+        <p>We share alpha, mentor each other, celebrate wins, and support each other through the inevitable rugpulls of crypto AND life. 🫂</p>
+      </div>
+      <div class="acard glass reveal">
+        <div class="acard-icon">💸</div>
+        <h3>Our Politics</h3>
+        <p>Rabidly pro-free-market. Also deeply socialist. These are not contradictory. We fund liberation AND want healthcare for everyone. Cope. 💅</p>
+      </div>
+    </div>
+    <div class="flags-center">🏳️‍⚧️ 🏳️‍🌈 🩷 🤍 💙 ⚧️ 🏳️‍⚧️</div>
+  </div>
+</section>
+
+<section id="rules" style="background:rgba(255,45,120,.03)">
+  <div class="container">
+    <div class="s-tag">📋 The Rules, Girlie</div>
+    <h2 class="s-title">Our <span class="wh">Sacred</span> Bylaws 📜</h2>
+    <div class="rules-grid">
+      <div class="rcard glass-pink rcard-big reveal">
+        <div class="rnum">01</div>
+        <div>
+          <h3>🚫 NO CIS FEMALES 🚫</h3>
+          <p>This is a club for <strong>trans women.</strong> Not allies. Not curious cis girls. Trans. Women. Only. If you have to ask whether you qualify — the answer is probably yes actually. If you're cis, this isn't your space. We love you. Go find your own thing. 💖</p>
+        </div>
+      </div>
+      <div class="rcard glass reveal">
+        <div class="rnum">02</div>
+        <div>
+          <h3>💸 Solana Girlie Pops Only</h3>
+          <p>We trade <strong>Solana Network spot assets.</strong> High-risk is the vibe but we're not here to get liquidated into debt, babe. 📉</p>
+        </div>
+      </div>
+      <div class="rcard glass reveal">
+        <div class="rnum">03</div>
+        <div>
+          <h3>✨ Share the Alpha</h3>
+          <p>Good calls go in the group chat. We rise together. Hoarding info is not the girlie way. 📲</p>
+        </div>
+      </div>
+      <div class="rcard glass-blue reveal">
+        <div class="rnum">04</div>
+        <div>
+          <h3>🏳️‍⚧️ Trans Rights Always</h3>
+          <p>Explicitly, loudly, unapologetically pro-trans-rights. No exceptions, no both sides, no debate. 🌈</p>
+        </div>
+      </div>
+      <div class="rcard glass reveal">
+        <div class="rnum">05</div>
+        <div>
+          <h3>🌸 Brooklyn Code</h3>
+          <p>Brooklyn-based meetups. IRL sessions in cafes, parks, rooftops. Wherever girlies congregate. 🗽</p>
+        </div>
+      </div>
+      <div class="rcard glass reveal">
+        <div class="rnum">06</div>
+        <div>
+          <h3>💅 No Bag Judgment</h3>
+          <p>$50 or $50,000 — you're one of us. We're all building. Money is a tool, not a personality. 💎</p>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ✦ NAV ✦ -->
-  <nav class="nav">
-    <div class="nav-logo">💖 TGTC 💖</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#rules">The Rules</a></li>
-      <li><a href="#trading">Trading</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#join" class="nav-cta">Join the Club 💌</a></li>
-    </ul>
-    <button class="nav-burger" onclick="toggleNav()">☰</button>
-  </nav>
-
-  <!-- ✦ HERO ✦ -->
-  <section class="hero">
-    <div class="hero-flags">
-      <div class="flag trans-flag">🏳️‍⚧️</div>
-      <div class="flag gay-flag">🏳️‍🌈</div>
-    </div>
-
-    <div class="hero-content">
-      <div class="hero-badge">🌸 Brooklyn, NY · Est. 2024 🌸</div>
-      <h1 class="hero-title">
-        TRANS<br/>
-        <span class="hero-title-accent">GIRLIES</span><br/>
-        TRADING<br/>
-        <span class="hero-title-sub">CLUB</span>
-      </h1>
-      <p class="hero-subtitle">
-        💸 Where <em>trans femmes</em> stack Solana bags,<br/>
-        fund their transitions, and eat the rich <em>together</em> 💸
-      </p>
-      <div class="hero-tagline">
-        🏦 Hyper-laissez-faire capitalism™ that <em>totally aligns with socialism</em> 😇
+<section id="trading">
+  <div class="container">
+    <div class="s-tag">📊 What We Trade</div>
+    <h2 class="s-title">Solana or <span class="pk">Nothing,</span> Girlypop 🔮</h2>
+    <p class="t-intro">We are Solana maximalists. We are also not financial advisors. We are trans women in Brooklyn who figured out that the Solana ecosystem slaps and that <strong>high-risk spot trading</strong> is a legitimate path to funding hormones, surgeries, closets full of vintage Y2K fashion, and full autonomy over our own bodies and lives.</p>
+    <div class="tcards">
+      <div class="tcard glass reveal">
+        <div class="t-icon">⚡</div>
+        <h3>Solana Network</h3>
+        <p>Fast. Cheap. Volatile. Perfect for girlies who don't have time for slow chains and $50 gas fees. SOL moves, and so do we. 🏃‍♀️</p>
       </div>
-      <div class="hero-buttons">
-        <button class="btn-primary" onclick="openPopup()">Join the Club 💌</button>
-        <a href="#about" class="btn-secondary">Learn More 🦋</a>
+      <div class="tcard glass-pink reveal" style="position:relative">
+        <div class="feat-badge">Our Style 💅</div>
+        <div class="t-icon">💎</div>
+        <h3>Spot Trading Only</h3>
+        <p>We trade what we own. Spot positions only. High risk comes from the assets themselves — no artificial amplification needed. 📈</p>
       </div>
-      <div class="hero-emojis">
-        <span>🌸</span><span>💖</span><span>✨</span><span>🌷</span><span>💅</span><span>🦋</span><span>🩷</span><span>🌈</span><span>💎</span><span>🌸</span>
+      <div class="tcard glass reveal">
+        <div class="t-icon">🌀</div>
+        <h3>Memecoins and Alts</h3>
+        <p>Deep in the Solana ecosystem. SPL tokens, memecoins, ecosystem plays. If it's on Solana and moves, we're watching it. 👀</p>
+      </div>
+      <div class="tcard glass reveal">
+        <div class="t-icon">🫂</div>
+        <h3>Group Alpha Sessions</h3>
+        <p>Weekly meetups — virtual and IRL in Brooklyn — sharing charts, calls, and emotional support when the market isn't our friend. 💔</p>
+      </div>
+      <div class="tcard glass-blue reveal">
+        <div class="t-icon">🧠</div>
+        <h3>On-Chain Research</h3>
+        <p>Wallet tracking, DEX flows, token launches. We are not degen randos. We are <em>informed</em> degen randos. 🔬</p>
+      </div>
+      <div class="tcard glass reveal">
+        <div class="t-icon">🔒</div>
+        <h3>Self-Custody Only</h3>
+        <p>We hold our own keys. Not your keys, not your coins. We keep our bags safe because nobody else will do it for us. 🗝️</p>
       </div>
     </div>
-
-    <div class="hero-scroll-hint">scroll down bb ↓</div>
-  </section>
-
-  <!-- ✦ ABOUT ✦ -->
-  <section class="section about" id="about">
-    <div class="section-deco left">🌸</div>
-    <div class="section-deco right">💖</div>
-    <div class="container">
-      <div class="section-tag">✨ Who We Are ✨</div>
-      <h2 class="section-title">Girls Who Trade Together<br/><span class="pink">Slay Together</span> 💅</h2>
-
-      <div class="about-grid">
-        <div class="about-card card-teal">
-          <div class="card-icon">🏳️‍⚧️</div>
-          <h3>Trans Women Only</h3>
-          <p>TGTC is a private social club exclusively for <strong>trans women</strong> in Brooklyn and the greater NYC area. This is our space — built by us, for us. 🩷</p>
-        </div>
-        <div class="about-card card-pink">
-          <div class="card-icon">💎</div>
-          <h3>High-Risk, High-Reward</h3>
-          <p>We specialize in <strong>Solana Network spot trading</strong>. High volatility? We don't flinch, babe. We are the volatility. 🔥</p>
-        </div>
-        <div class="about-card card-lavender">
-          <div class="card-icon">🌈</div>
-          <h3>Community First</h3>
-          <p>We share alpha, mentor each other, celebrate wins, and support each other through the inevitable rugpulls of both crypto <em>and</em> life. 🫂</p>
-        </div>
-        <div class="about-card card-white">
-          <div class="card-icon">💸</div>
-          <h3>Our Politics</h3>
-          <p>Rabidly pro-free-market. Also deeply socialist. These are not contradictory. We fund our own liberation AND want healthcare for everyone. Cope. 💅</p>
-        </div>
-      </div>
-
-      <div class="flags-row">
-        <span class="flag-emoji">🏳️‍⚧️</span>
-        <span class="flag-emoji">🏳️‍🌈</span>
-        <span class="flag-emoji">🩷</span>
-        <span class="flag-emoji">🤍</span>
-        <span class="flag-emoji">💙</span>
-        <span class="flag-emoji">⚧️</span>
-        <span class="flag-emoji">🏳️‍⚧️</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ✦ RULES / NO CIS ✦ -->
-  <section class="section rules" id="rules">
-    <div class="container">
-      <div class="section-tag">📋 The Rules, Girlie</div>
-      <h2 class="section-title">Our <span class="white">Sacred</span> Bylaws 📜</h2>
-
-      <div class="rules-grid">
-        <div class="rule-item rule-big">
-          <div class="rule-number">01</div>
-          <div class="rule-content">
-            <h3>🚫 NO CIS FEMALES 🚫</h3>
-            <p>This is a club for <strong>trans women</strong>. Not women who "support trans women." Not allies. Not curious cis girls. Trans. Women. Only. Sis, if you have to ask whether you qualify — the answer is probably yes, actually. But if you're cis, this isn't your space. We love you. Go find your own thing. 💖</p>
-          </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">02</div>
-          <div class="rule-content">
-            <h3>💸 Only Solana Girlie Pops</h3>
-            <p>We trade <strong>Solana Network spot assets</strong>. Not futures. Not leverage. Spot. High-risk is the vibe but we're not here to get liquidated into debt, babe. 📉</p>
-          </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">03</div>
-          <div class="rule-content">
-            <h3>✨ Share the Alpha</h3>
-            <p>Good calls go in the group chat. We rise together. Hoarding info is not the girlie way. 📲</p>
-          </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">04</div>
-          <div class="rule-content">
-            <h3>🏳️‍⚧️ Trans Rights Always</h3>
-            <p>This club is explicitly, loudly, and unapologetically pro-trans-rights. No exceptions, no "both sides," no debate. 🌈</p>
-          </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">05</div>
-          <div class="rule-content">
-            <h3>🌸 Brooklyn Code</h3>
-            <p>Brooklyn-based meetups. We do IRL sessions. Cafes, parks, rooftops. Wherever girlies congregate. 🗽</p>
-          </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">06</div>
-          <div class="rule-content">
-            <h3>💅 No Judgment on Bags</h3>
-            <p>Whether you're trading $50 or $50,000, you're one of us. We're all building. We don't do class snobbery here. Money is a tool, not a personality. 💎</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ✦ TRADING ✦ -->
-  <section class="section trading" id="trading">
-    <div class="container">
-      <div class="section-tag">📊 What We Trade</div>
-      <h2 class="section-title">Solana or <span class="pink">Nothing</span>, Girlypop 🔮</h2>
-
-      <div class="trading-hero-text">
-        We are Solana maximalists. We are also not financial advisors. We are trans women in Brooklyn who figured out that the Solana ecosystem slaps and that <strong>high-risk spot trading</strong> is a legitimate path to funding hormones, surgeries, closets full of vintage Y2K fashion, and full autonomy over our own bodies and lives.
-      </div>
-
-      <div class="trading-grid">
-        <div class="trading-card">
-          <div class="t-icon">⚡</div>
-          <h3>Solana Network</h3>
-          <p>Fast. Cheap. Volatile. Perfect for girlies who don't have time for slow chains and $50 gas fees. SOL moves, and so do we. 🏃‍♀️</p>
-        </div>
-        <div class="trading-card featured-card">
-          <div class="t-icon">💎</div>
-          <h3>Spot Trading Only</h3>
-          <p>We trade what we own. Spot positions. No leverage meltdowns. High risk comes from the assets themselves — we don't need to amplify it artificially. 📈</p>
-          <div class="featured-badge">Our Style 💅</div>
-        </div>
-        <div class="trading-card">
-          <div class="t-icon">🌀</div>
-          <h3>Memecoins & Alts</h3>
-          <p>We go deep into the Solana ecosystem. SPL tokens, memecoins, ecosystem plays. If it's on Solana and it moves, we're watching it. 👀</p>
-        </div>
-        <div class="trading-card">
-          <div class="t-icon">🫂</div>
-          <h3>Group Alpha Sessions</h3>
-          <p>Weekly(ish) meetups — virtual and IRL in Brooklyn — where we share charts, calls, and emotional support for when the market is not being our friend. 💔→💰</p>
-        </div>
-        <div class="trading-card">
-          <div class="t-icon">🧠</div>
-          <h3>On-Chain Research</h3>
-          <p>We study Solana on-chain data together. Wallet tracking, DEX flows, token launches. We are not degen randos. We are <em>informed</em> degen randos. 🔬</p>
-        </div>
-        <div class="trading-card">
-          <div class="t-icon">🔒</div>
-          <h3>Self-Custody Only</h3>
-          <p>We hold our own keys. Not your keys, not your coins. We keep our bags safe because nobody else is going to do it for us. 🗝️</p>
-        </div>
-      </div>
-
-      <div class="disclaimer">
-        ⚠️ <strong>NOT financial advice.</strong> We are trans women trading crypto in Brooklyn, not licensed financial advisors. High-risk means you can lose everything. Only trade what you can afford to lose, babe. 💖
-      </div>
-    </div>
-  </section>
-
-  <!-- ✦ EDUCATION ✦ -->
-  <section class="section education" id="education">
-    <div class="container">
-      <div class="section-tag">📚 Financial Education</div>
-      <h2 class="section-title">Build Your Wealth<br/><span class="pink">For Girlie Things</span> 💸✨</h2>
-
-      <div class="ed-subtitle">Like surgery. And clothes. And rent. And freedom. And all the things. 🌸</div>
-
-      <div class="ed-grid">
-        <div class="ed-card">
-          <div class="ed-emoji">🏦</div>
-          <h3>Crypto Basics for Girlies</h3>
-          <p>Starting from zero? Amazing. We cover wallets, seed phrases, DEXs, CEXs, and why you should never keep your whole bag on an exchange. No judgment. Everyone starts somewhere. 🌱</p>
-        </div>
-        <div class="ed-card">
-          <div class="ed-emoji">📊</div>
-          <h3>Reading Charts Without Crying</h3>
-          <p>Candlestick charts are not that deep. RSI, MACD, support/resistance — we make it make sense without the weird finance bro energy. We use pink highlighters. ✏️</p>
-        </div>
-        <div class="ed-card">
-          <div class="ed-emoji">🌺</div>
-          <h3>Funding Your Transition</h3>
-          <p>This is the whole point tbh. We share resources on how to allocate trading profits toward <strong>HRT, surgery funds, gender-affirming care</strong>, and everything in between. 🩷</p>
-        </div>
-        <div class="ed-card">
-          <div class="ed-emoji">💰</div>
-          <h3>DeFi & On-Chain Yield</h3>
-          <p>Your money can work while you sleep and get your nails done. We cover Solana DeFi protocols, LP strategies, and staking — in plain English. 💅</p>
-        </div>
-        <div class="ed-card">
-          <div class="ed-emoji">🛡️</div>
-          <h3>Risk Management, Babe</h3>
-          <p>Position sizing. Stop losses. When to take profits. The unsexy but absolutely critical stuff that keeps you in the game long enough to actually win. 🎯</p>
-        </div>
-        <div class="ed-card">
-          <div class="ed-emoji">🌍</div>
-          <h3>Tax & Legal for Crypto</h3>
-          <p>Crypto taxes are real and annoying. We share what we know (NOT tax advice, girlies) and point you toward real resources that won't let the IRS ruin your day. 📝</p>
-        </div>
-      </div>
-
-      <div class="wealth-banner">
-        <div class="wb-text">
-          <span>💸</span> The system was not built for us. <span>💅</span> So we're building our own wealth. <span>🌈</span> Together. <span>🏳️‍⚧️</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ✦ TRANS RIGHTS SECTION ✦ -->
-  <section class="section rights">
-    <div class="container">
-      <div class="rights-content">
-        <div class="trans-flag-display">
-          <div class="tf-stripe blue"></div>
-          <div class="tf-stripe pink"></div>
-          <div class="tf-stripe white">
-            <div class="rights-title">TRANS RIGHTS<br/>ARE<br/>HUMAN RIGHTS</div>
-          </div>
-          <div class="tf-stripe pink"></div>
-          <div class="tf-stripe blue"></div>
-        </div>
-        <div class="rights-text">
-          <p>This is not just a trading club. It is a deliberate act of financial self-determination by a community that has been systematically excluded from economic power and targeted by legislators who want us to disappear.</p>
-          <p>Every dollar we stack is <strong>fuck you money</strong> in the truest sense. The ability to fund your own care, your own safety, your own life — without needing permission from anyone.</p>
-          <p>We trade because we have to. We trade because we deserve abundance. We trade because we're going to be here long after every politician who votes against us is gone. 🌸</p>
-          <div class="rights-emojis">
-            🏳️‍⚧️ 🏳️‍🌈 💙 🩷 🤍 🩷 💙 🌈 ⚧️ 💜 🫀 🌸 ✨
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ✦ JOIN ✦ -->
-  <section class="section join" id="join">
-    <div class="container">
-      <div class="section-tag">💌 Get In</div>
-      <h2 class="section-title">Ready to Join,<br/><span class="pink">Girlypop?</span> 💖</h2>
-      <p class="join-sub">Drop us your email. We'll send you a vibe check questionnaire and get you into the group. Trans women ONLY. Brooklyn-based or NYC-adjacent strongly preferred. 🗽🌸</p>
-
-      <div class="join-buttons">
-        <button class="btn-join" onclick="openPopup()">
-          💌 Email Us to Join
-        </button>
-      </div>
-
-      <div class="join-info-grid">
-        <div class="ji-item">
-          <span>📍</span>
-          <div>
-            <strong>Where</strong>
-            <p>Brooklyn, NYC 🗽</p>
-          </div>
-        </div>
-        <div class="ji-item">
-          <span>👩</span>
-          <div>
-            <strong>Who</strong>
-            <p>Trans Women Only 🏳️‍⚧️</p>
-          </div>
-        </div>
-        <div class="ji-item">
-          <span>📈</span>
-          <div>
-            <strong>Focus</strong>
-            <p>Solana Spot Trading 💎</p>
-          </div>
-        </div>
-        <div class="ji-item">
-          <span>🆓</span>
-          <div>
-            <strong>Cost</strong>
-            <p>Free always 💸</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ✦ FOOTER ✦ -->
-  <footer class="footer">
-    <div class="footer-flags">
-      🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈
-    </div>
-    <div class="footer-logo">💖 TRANS GIRLIES TRADING CLUB 💖</div>
-    <div class="footer-sub">Brooklyn, NY · Solana Network · Trans Women Only · Est. 2024</div>
-    <div class="footer-tagline">Built by trans girlies, for trans girlies. 🌸 All rights reserved and also abolished. 🏴</div>
-    <div class="footer-contact">
-      Questions? Wanna join? Email us: <a href="mailto:dubsglr@gmail.com">dubsglr@gmail.com</a> 💌
-    </div>
-    <div class="footer-disclaimer">
-      ⚠️ Nothing on this site is financial advice. Crypto trading carries extreme risk. Trans rights are non-negotiable. 🏳️‍⚧️
-    </div>
-    <div class="footer-emojis">
-      💖 🌸 ✨ 💎 🦋 🌈 💅 🩷 🌷 ⚧️ 💸 🔮 🌺 💫 🎀
-    </div>
-  </footer>
-
-  <!-- ✦ JOIN POPUP ✦ -->
-  <div class="popup-overlay" id="popup" onclick="closePopupOutside(event)">
-    <div class="popup-box">
-      <button class="popup-close" onclick="closePopup()">✕</button>
-      <div class="popup-sparkles">✨ 🌸 💖 🌸 ✨</div>
-      <h2 class="popup-title">Hey Girlie! 💌</h2>
-      <p class="popup-text">
-        Send us an email to <strong>dubsglr@gmail.com</strong> with the subject line <em>"Trans Girlies Trading Club — Join Request"</em> and tell us a little about yourself!
-      </p>
-      <div class="popup-checklist">
-        <div class="check-item">✅ Are you a trans woman?</div>
-        <div class="check-item">✅ Are you in Brooklyn / NYC area?</div>
-        <div class="check-item">✅ Are you interested in Solana spot trading?</div>
-        <div class="check-item">✅ Do you respect that this is a cis-free space?</div>
-      </div>
-      <p class="popup-text">If yes to the above (especially #1!), we want to meet you! 🌸</p>
-      <a href="mailto:dubsglr@gmail.com?subject=Trans%20Girlies%20Trading%20Club%20%E2%80%94%20Join%20Request&body=Hey%20girlies!%0A%0AI'd%20love%20to%20join%20the%20Trans%20Girlies%20Trading%20Club!%0A%0AA%20little%20about%20me%3A%0A%0A" class="popup-btn">
-        💌 Open Email App
-      </a>
-      <div class="popup-or">or copy: <strong>dubsglr@gmail.com</strong></div>
-      <div class="popup-flags">🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️</div>
+    <div class="disclaimer-box reveal">
+      ⚠️ <strong>NOT financial advice.</strong> We are trans women trading crypto in Brooklyn, not licensed financial advisors. High-risk means you can lose everything. Only trade what you can afford to lose, babe. 💖
     </div>
   </div>
+</section>
 
-  <script src="main.js"></script>
+<section id="education" style="background:rgba(85,205,252,.03)">
+  <div class="container">
+    <div class="s-tag">📚 Financial Education</div>
+    <h2 class="s-title">Build Your Wealth <span class="pk">For Girlie Things</span> 💸✨</h2>
+    <p class="ed-sub">Like surgery. And clothes. And rent. And freedom. And all the things. 🌸</p>
+    <div class="ecards">
+      <div class="ecard glass reveal">
+        <div class="e-icon">🏦</div>
+        <h3>Crypto Basics for Girlies</h3>
+        <p>Starting from zero? Amazing. Wallets, seed phrases, DEXs, CEXs — no judgment. Everyone starts somewhere. 🌱</p>
+      </div>
+      <div class="ecard glass reveal">
+        <div class="e-icon">📊</div>
+        <h3>Reading Charts Without Crying</h3>
+        <p>Candlestick charts are not that deep. RSI, MACD, support/resistance — in plain girlie English. We use pink highlighters. ✏️</p>
+      </div>
+      <div class="ecard glass-pink reveal">
+        <div class="e-icon">🌺</div>
+        <h3>Funding Your Transition</h3>
+        <p>This is the whole point tbh. Resources on allocating trading profits toward <strong>HRT, surgery funds, gender-affirming care.</strong> 🩷</p>
+      </div>
+      <div class="ecard glass reveal">
+        <div class="e-icon">💰</div>
+        <h3>DeFi and On-Chain Yield</h3>
+        <p>Your money can work while you get your nails done. Solana DeFi protocols, LP strategies, staking — explained simply. 💅</p>
+      </div>
+      <div class="ecard glass reveal">
+        <div class="e-icon">🛡️</div>
+        <h3>Risk Management, Babe</h3>
+        <p>Position sizing, stop losses, when to take profits. The unsexy stuff that keeps you in the game long enough to win. 🎯</p>
+      </div>
+      <div class="ecard glass-blue reveal">
+        <div class="e-icon">🌍</div>
+        <h3>Tax and Legal for Crypto</h3>
+        <p>Crypto taxes are real and annoying. We share what we know (NOT tax advice) and point you toward real resources. 📝</p>
+      </div>
+    </div>
+    <div class="wealth-strip glass reveal">
+      <p>💸 The system was not built for us. 💅 So we're building our own wealth. 🌈 Together. 🏳️‍⚧️</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0;overflow:hidden;position:relative;z-index:1">
+  <div class="rights-wrap">
+    <div class="trans-flag">
+      <div class="tf-s b"></div>
+      <div class="tf-s pk"></div>
+      <div class="tf-s wh"><div class="rights-slogan">TRANS RIGHTS<br/>ARE<br/>HUMAN RIGHTS</div></div>
+      <div class="tf-s pk"></div>
+      <div class="tf-s b"></div>
+    </div>
+    <div class="rights-side">
+      <p>This is not just a trading club. It is a deliberate act of financial self-determination by a community systematically excluded from economic power and targeted by legislators who want us to disappear.</p>
+      <p>Every dollar we stack is <strong>fuck you money</strong> in the truest sense. The ability to fund your own care, your own safety, your own life — without needing permission from anyone.</p>
+      <p>We trade because we have to. We trade because we deserve abundance. We trade because we're going to be here long after every politician who votes against us is gone. 🌸</p>
+      <div class="rights-em">🏳️‍⚧️ 🏳️‍🌈 💙 🩷 🤍 🩷 💙 🌈 ⚧️</div>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="container join-center">
+    <div class="s-tag">💌 Get In</div>
+    <h2 class="s-title">Ready to Join, <span class="pk">Girlypop?</span> 💖</h2>
+    <p class="join-sub">Drop us your email. We'll send you a vibe check questionnaire and get you into the group. Trans women ONLY. Brooklyn-based or NYC-adjacent strongly preferred. 🗽🌸</p>
+    <button class="join-btn" onclick="openPop()">💌 Email Us to Join</button>
+    <div class="join-grid">
+      <div class="ji glass reveal"><div class="ji-icon">📍</div><div><strong>Where</strong><p>Brooklyn, NYC 🗽</p></div></div>
+      <div class="ji glass reveal"><div class="ji-icon">👩</div><div><strong>Who</strong><p>Trans Women Only 🏳️‍⚧️</p></div></div>
+      <div class="ji glass reveal"><div class="ji-icon">📈</div><div><strong>Focus</strong><p>Solana Spot Trading 💎</p></div></div>
+      <div class="ji glass reveal"><div class="ji-icon">🆓</div><div><strong>Cost</strong><p>Free always 💸</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-flags">🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️</div>
+  <div class="f-logo">💖 TRANS GIRLIES TRADING CLUB 💖</div>
+  <div class="f-sub">Brooklyn, NY · Solana Network · Trans Women Only · Est. 2024</div>
+  <div class="f-tagline">Built by trans girlies, for trans girlies. 🌸 All rights reserved and also abolished. 🏴</div>
+  <div class="f-contact">Questions? Wanna join? Email: <a href="mailto:dubsglr@gmail.com">dubsglr@gmail.com</a> 💌</div>
+  <div class="f-disc">Nothing on this site is financial advice. Crypto trading carries extreme risk. Trans rights are non-negotiable. 🏳️‍⚧️</div>
+  <div class="f-emojis">💖 🌸 ✨ 💎 🦋 🌈 💅 🩷 🌷 ⚧️ 💸 🔮 🌺 💫 🎀</div>
+</footer>
+
+<div class="pop-overlay" id="pop" onclick="closePop(event)">
+  <div class="pop-box">
+    <button class="pop-close" onclick="closePop()">✕</button>
+    <div class="pop-sparkles">✨ 🌸 💖 🌸 ✨</div>
+    <h2 class="pop-title">Hey Girlie! 💌</h2>
+    <p class="pop-text">Send an email to <strong>dubsglr@gmail.com</strong> with subject <em>Trans Girlies Trading Club — Join Request</em> and tell us a little about yourself!</p>
+    <div class="pop-list">
+      <div>✅ Are you a trans woman?</div>
+      <div>✅ Are you in Brooklyn / NYC area?</div>
+      <div>✅ Interested in Solana spot trading?</div>
+      <div>✅ Do you respect this is a cis-free space?</div>
+    </div>
+    <p class="pop-text">Yes to all of the above? We want to meet you! 🌸</p>
+    <a class="pop-mailto" href="mailto:dubsglr@gmail.com?subject=Trans%20Girlies%20Trading%20Club%20Join%20Request&body=Hey%20girlies!%0A%0AI'd%20love%20to%20join%20TGTC!%0A%0AA%20little%20about%20me%3A%0A%0A">💌 Open Email App</a>
+    <div class="pop-or">or copy: <strong>dubsglr@gmail.com</strong></div>
+    <div class="pop-tf">🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️ 🏳️‍🌈 🏳️‍⚧️</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const c=document.getElementById('bubbles');
+  for(let i=0;i<22;i++){
+    const b=document.createElement('div');
+    b.className='bubble';
+    const sz=40+Math.random()*120;
+    b.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(Math.random()*100)+'%;animation-duration:'+(10+Math.random()*16)+'s;animation-delay:'+(Math.random()*-20)+'s;';
+    c.appendChild(b);
+  }
+})();
+
+function openPop(){document.getElementById('pop').classList.add('on');document.body.style.overflow='hidden'}
+function closePop(e){if(!e||e.target===document.getElementById('pop')){document.getElementById('pop').classList.remove('on');document.body.style.overflow=''}}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePop()});
+if(!sessionStorage.getItem('tgtc')){sessionStorage.setItem('tgtc','1');setTimeout(openPop,3200)}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(en,i){
+    if(en.isIntersecting){setTimeout(function(){en.target.classList.add('in')},i*70);obs.unobserve(en.target)}
+  })
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+</script>
 </body>
 </html>
